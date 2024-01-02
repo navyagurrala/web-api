@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+const posts="https://jsonplaceholder.typicode.com/photos"
+fetch(posts).then((Response)=>{
+    // console.log(Response)
+    return Response.json()
+}).then(Response=>showdata(Response))
+
+
+.catch((error)=>{
+    console.log(error)
+})
+
+function showdata(Response){
+    console.log(Response);
+
+    Response.map((value) => {
+          
+          //title
+          var p1= document.createElement("p");
+          p1.innerHTML = value.title;
+          document.body.appendChild(p1);
+
+          //image
+          var img1 = document.createElement("img");
+          img1.setAttribute("src", value.url);
+          img1.style.width = "140px";
+          img1.style.height = "240px";
+        document.body.appendChild(img1);
+
+          
+        });
+}
+    </script>
+</body>
+</html>
